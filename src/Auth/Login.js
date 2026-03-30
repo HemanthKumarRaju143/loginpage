@@ -41,7 +41,7 @@ function Login(){
         if(hasErr == false){
             alert("api is success")
         }else{
-            alert("plzz check details something went wrong")
+            alert("plzz check details something went wrong //")
         }
     } 
 
