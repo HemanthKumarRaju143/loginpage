@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { isEmailValid } from "../Utilis/utilis"
+import axios from "axios"
 
 function SignUp(){
 
@@ -11,7 +12,7 @@ function SignUp(){
         firstNameErr : "" , lastNameErr : "" , emailErr : "" , passwordErr : "" , mobileErr : ""
     })
 
-    const handleSignUPData = () =>{
+    const handleSignUPData = async() =>{
       
         let hasErr = false
 
@@ -71,6 +72,12 @@ function SignUp(){
 
         if(hasErr == false){
             alert("api is success")
+            try{
+                let apiRes = await axios.post("http://localhost:8080/apis/auth/signup" , signUpData)
+                console.log(apiRes.data)
+            }catch(e){
+                console.log(e.message)
+            }
         }else{
             alert("something went wrong")
         }

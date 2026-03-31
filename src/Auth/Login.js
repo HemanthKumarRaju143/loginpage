@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { isEmailValid } from "../Utilis/utilis"
+import axios from "axios"
 
 function Login(){
 
@@ -11,7 +12,7 @@ function Login(){
         emailErr : "" , passwordErr : ""
     })
 
-    let handleLoginData = () =>{
+    let handleLoginData = async() =>{
         let hasErr = false
 
         let tempErr = {...LoginDataErr}
@@ -39,7 +40,7 @@ function Login(){
         setLoginDataErr({...tempErr})
 
         if(hasErr == false){
-            alert("api is success")
+            let apiRes = await axios.post("http://localhost:8080/apis/auth/login" , LoginData) 
         }else{
             alert("plzz check details something went wrong //")
         }
